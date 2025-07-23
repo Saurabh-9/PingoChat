@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pingo Chat Design System - Beautiful modern chat colors */
+
+@layer base {
+  :root {
+    /* Chat theme colors */
+    --background: 245 245 250; /* Light purple-gray */
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Pingo brand colors - vibrant chat theme */
+    --primary: 259 94% 65%; /* Beautiful purple */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 259 94% 75%;
+
+    --secondary: 240 21% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 259 94% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 0 0% 100%;
+    --ring: 259 94% 65%;
+
+    --radius: 1rem;
+
+    /* Chat specific colors */
+    --chat-bubble-sent: 259 94% 65%;
+    --chat-bubble-sent-foreground: 0 0% 100%;
+    --chat-bubble-received: 0 0% 100%;
+    --chat-bubble-received-foreground: 220 13% 18%;
+    --chat-input: 0 0% 100%;
+    --chat-sidebar: 0 0% 98%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(259 94% 65%), hsl(289 94% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(245 245 250), hsl(240 21% 98%));
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-message: 0 2px 8px hsl(259 94% 65% / 0.15);
+    --shadow-float: 0 4px 20px hsl(259 94% 65% / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark theme for Pingo Chat */
+    --background: 240 21% 15%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 21% 18%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 21% 18%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 259 94% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 259 94% 75%;
+
+    --secondary: 240 21% 25%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 21% 25%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 259 94% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 240 21% 25%;
+    --input: 240 21% 25%;
+    --ring: 259 94% 65%;
+
+    /* Dark chat colors */
+    --chat-bubble-sent: 259 94% 65%;
+    --chat-bubble-sent-foreground: 0 0% 100%;
+    --chat-bubble-received: 240 21% 25%;
+    --chat-bubble-received-foreground: 0 0% 95%;
+    --chat-input: 240 21% 25%;
+    --chat-sidebar: 240 21% 18%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(259 94% 65%), hsl(289 94% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(240 21% 15%), hsl(240 21% 18%));
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent;
+  }
+}
+
+@layer components {
+  /* Chat message animations */
+  .message-enter {
+    animation: messageSlideIn 0.3s ease-out;
+  }
+
+  .message-bubble {
+    transition: var(--transition-smooth);
+  }
+
+  .message-bubble:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Typing indicator animation */
+  .typing-dots {
+    animation: typingBounce 1.4s ease-in-out infinite;
+  }
+
+  .typing-dots:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-dots:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
